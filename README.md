@@ -1,5 +1,5 @@
 # battleShip
-Classic game of Battleship
+Classic game of Battleship w/ UX/UI
 
 Created using JS, HTML and CSS.
 
