@@ -16,14 +16,27 @@ module.exports = {
             },
 
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(|png|svg|jpg|jpeg|gif)$/i,
                 type: "asset/resource"
             },
 
             {
                 test:/\.(woff|woff2|ttf|otf)$/i,
                 type: "asset/resource"
-            }
+            },
+            {
+                test: /\.html$/,
+                use: {
+                  loader: "html-loader",
+                  options: {
+                    attrs: [":src"]
+                  }
+                }
+              },
+              {
+                  test:/\.(mp4)$/i,
+                  use:["file-loader"]
+              }
         ]
     },
     // plugins:[new HtmlWebpackPlugin()],

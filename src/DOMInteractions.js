@@ -7,8 +7,8 @@ import human4Vertical from "./img/human/human4Vertical.png"
 import human3Vertical from "./img/human/human3Vertical.png"
 import human2Vertical from "./img/human/human2Vertical.png"
 import human1Ship from "./img/human/human1.png"
-
-
+import logo from "./img/BS.png"
+document.querySelector("#bsLogo").src=logo
 
 
 let renderComputerBoard = () => {
