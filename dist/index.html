@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BattleShip</title>
-    <script src="./main.js"></script>
+    <script src="./main.js" defer></script>
 </head>
 <body>
-    
+    <video autoplay loop muted id="background">
+        <source src="../src/img/space.mp4" type="video/mp4">
+    </video>
+
+    <div id="header">
+        <img src="../src/img/BS.png" alt="" id="bsLogo">
+    </div>
+
+    <div id="gameBody">
+        <div class="playerSide">
+            <div id="playerBoard">
+
+            </div>
+
+        </div>
+
+        <div class="playerShips">
+
+        </div>
+
+        <div class="computerSide">
+            <div id="computerBoard">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
 </body>
 </html>

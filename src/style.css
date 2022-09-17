@@ -1,3 +1,228 @@
 body{
-    background-color: rgb(83, 78, 78);
+    background-color: rgb(4, 47, 82);
+    margin: 0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
 }
+
+#header{
+    height: 15%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+#gameBody{
+    height: 80%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.playerSide{
+    height: 100%;
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.computerSide{
+    height: 100%;
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer{
+    border: 2px solid white;
+    height: 5%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#playerBoard,
+#computerBoard{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    border: 1px solid white;
+    aspect-ratio: 1 / 1;
+    width: 60%;
+    
+
+}
+
+.gridCell{
+    border:2px solid rgba(255, 255, 255, .3);
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#computerBoard > .gridCell:hover{
+    background-color:rgba(92, 109, 122, 0.9);
+}
+
+.pointHit{
+    background-color:rgba(255, 30, 0, 0.9);}
+
+.ship{
+  height: 200px;
+  width: 50px;
+  position: absolute;
+  top: 420px;
+  left: 368px;
+}
+
+.ship2{
+    height: 130px;
+    width: 50px;
+    position: absolute;
+    top: 664px;
+    left: 197px;
+  }
+  
+  #background{
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      z-index: -1;
+  }
+
+  #bsLogo{
+      margin-top: 20px;
+  }
+
+.shipDisplayed{
+    max-height: 100%;
+    max-width: 30%;
+}
+  .playerShips{
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      height: 8rem;
+      width: 8rem;
+      margin-top: 15rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      position: relative;
+      padding: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:1.2rem;
+      background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  
+
+  .currentDrag{
+      position: absolute;
+      /* height: 13rem; */
+  }
+  .currentDrag.onGrid{
+      height: 4rem;
+      position: absolute;
+  }
+
+  .humanShip0.onGrid{
+    position: absolute;
+    height: 15rem;
+      margin-left:.5rem;
+      margin-top: -12.5rem;
+  }
+
+  .humanShip1.onGrid{
+    position: absolute;
+    height: 12rem;
+      margin-left:.5rem;
+      margin-top: -9.5rem;
+  }
+
+  .humanShip2.onGrid{
+    position: absolute;
+    height: 8.6rem;
+      margin-left:.5rem;
+      margin-top: -6rem;
+  }
+
+  .humanShip3.onGrid{
+    position: absolute;
+    height: 5.6rem;
+      margin-left:.5rem;
+      margin-top: -3rem;
+  }
+
+  
+  .humanShip4.onGrid{
+    position: absolute;
+    height: 2.4rem;
+      margin-left:.2rem;
+      margin-top: .3rem;
+  }
+
+  .spotAvailable{
+      background-color: rgba(43, 186, 230, 0.2);
+  }
+
+  .potentialSpot{
+      /* border: 1px solid rgba(13, 255, 85, 0.2); */
+      background-color: rgba(24, 185, 86, 0.616);;
+      /* opacity: .4; */
+  }
+  
+  .spotTaken{
+      background-color: rgba(44, 41, 41, .4);
+  }
+  
+  .orientationButton{
+      position: absolute;
+      top: -5rem;
+      height: 2.5rem;
+      width: 6rem;
+      border: 2px solid rgba(255, 255, 0, .8);
+      border-radius: 90px;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+  }
+
+  .orientationButton:active{
+    background-color: rgba(97, 88, 88, 0.8);
+  }
+
+  .rotated{
+      transform: rotate(90deg);
+  }
+
+  .humanShip0.onGrid.rotated{
+
+      margin-left:7.5rem;
+      margin-top: -6rem;
+  }
+
+  .humanShip1.onGrid.rotated{
+
+    margin-left:5.8rem;
+      margin-top: -4.5rem;
+  }
+
+  .humanShip2.onGrid.rotated{
+    margin-left:4.1rem;
+      margin-top: -2.7rem;
+  }
+
+  .humanShip3.onGrid.rotated{
+    margin-left:2.1rem;
+    margin-top: -1.3rem;
+  }
+
+  
+
+
+
