@@ -2,6 +2,12 @@
 import gameLoop from "./gameLoop"
 import players from "./players"
 import { currentPlayer } from "./players"
+import human5Vertical from "./img/human/human5Vertical.png"
+import human4Vertical from "./img/human/human4Vertical.png"
+import human3Vertical from "./img/human/human3Vertical.png"
+import human2Vertical from "./img/human/human2Vertical.png"
+import human1Ship from "./img/human/human1.png"
+
 
 
 
@@ -80,7 +86,7 @@ let setPlayerShips= (start, length)=>{
     start=start||0
     length=length||5
     if(start == playerShips.length){
-        gameBody.append(computerSide)
+        // gameBody.append(computerSide)
         playerShipsDiv.style.visibility="hidden"
         return gameLoop()
     }
@@ -207,24 +213,16 @@ function getAllPossibleCoordinates(length,ship){
 
 
 let human5V=new Image()
-human5V.src= "../src/img/human/human5Vertical.png"
-let human5H=new Image()
-human5H.src="../src/img/human/human5Horizontal.png"
+human5V.src= human5Vertical
 let human4V=new Image()
-human4V.src="../src/img/human/human4Vertical.png"
-let human4H=new Image()
-human4H.src="../src/img/human/human4Horizontal.png"
+human4V.src=human4Vertical
 let human3V=new Image()
-human3V.src="../src/img/human/human3Vertical.png"
-let human3H=new Image()
-human3H.src="../src/img/human/human3Horizontal.png"
+human3V.src=human3Vertical
 let human2V=new Image()
-human2V.src="../src/img/human/human2Vertical.png"
-let human2H=new Image()
-human2H.src="../src/img/human/human2Horizontal.png"
+human2V.src=human2Vertical
 let human1= new Image()
-human1.src= "../src/img/human/human1.png"
-let playerShips= [[human5V, human5H], [human4V, human4H], [human3V, human3H], [human2V, human2H], [human1]]
+human1.src= human1Ship
+let playerShips= [[human5V], [human4V], [human3V], [human2V], [human1]]
 
 
 
