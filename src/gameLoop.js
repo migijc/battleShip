@@ -3,11 +3,11 @@ import { currentPlayer } from "./players";
 import { renderComputerBoard, renderPlayerBoard, setPlayerShips } from "./DOMInteractions"
 let gameBody=document.body.querySelector("#gameBody")
 let computerSide=document.body.querySelector(".computerSide")
-players[1].board.placeShip(5, [2,1], "Vertical")
-    players[1].board.placeShip(4, [2,6], "Vertical")
-    players[1].board.placeShip(3, [4,4], "Horizontal")
-    players[1].board.placeShip(2, [8, 7], "Horizontal")
-    players[1].board.placeShip(1, [0, 9], "Vertical")
+// players[1].board.placeShip(5, [2,1], "Vertical")
+//     players[1].board.placeShip(4, [2,6], "Vertical")
+//     players[1].board.placeShip(3, [4,4], "Horizontal")
+    // players[1].board.placeShip(2, [8, 7], "Horizontal")
+//     players[1].board.placeShip(1, [0, 9], "Vertical")
 
     // players[0].board.placeShip(5, [3, 3], "Vertical")
     // players[0].board.placeShip(4, [6, 0], "Vertical")

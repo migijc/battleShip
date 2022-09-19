@@ -7,6 +7,11 @@ import human4Vertical from "./img/human/human4Vertical.png"
 import human3Vertical from "./img/human/human3Vertical.png"
 import human2Vertical from "./img/human/human2Vertical.png"
 import human1Ship from "./img/human/human1.png"
+import comp5Vertical from "./img/computer/computer5Vertical.png"
+import comp4Vertical from "./img/computer/computer4Vertical.png"
+import comp3Vertical from "./img/computer/computer3Vertical.png"
+import comp2Vertical from "./img/computer/computer2Vertical.png"
+import comp1Ship from "./img/computer/computer1.png"
 import logo from "./img/BS.png"
 document.querySelector("#bsLogo").src=logo
 
@@ -49,12 +54,14 @@ let markGridSpotHit=(hitSpot)=>{
     let spotHit
     if(currentPlayer.name=="Human"){
         spotHit=Array.from(document.querySelectorAll("#computerBoard > .gridCell"))
+        players[1].displaySunkShips()
     } else {
         spotHit=Array.from(document.querySelectorAll("#playerBoard > .gridCell"))
+
     }
     spotHit=spotHit.filter(spot=>{
         if(spot.dataset.coordinates== hitSpot.toString()){
-            spot.style.backgroundColor="#29be6085"
+            spot.style.backgroundColor="#ff212165"
             return spot
         }
     })
@@ -69,7 +76,7 @@ let markGridSpotMissed=(missedSpot)=>{
     }
     spotHit=spotHit.filter(spot=>{
         if(spot.dataset.coordinates== missedSpot.toString()){
-            spot.style.backgroundColor="#be3c2985"
+            spot.style.backgroundColor="#96909085"
             return spot
         }
     })
@@ -131,6 +138,17 @@ let setPlayerShips= (start, length)=>{
             }
         )
     }
+}
+
+function placeComputerShipImg(spot, length, axis){
+   
+    let img=compShips[length-1]
+    img.classList.add(`comp${length-1}`)
+    spot.appendChild(img)
+    if(axis=="Horizontal"){
+        img.classList.add("rotated")
+    }
+    img.style.visibility="hidden"
 }
 
 
@@ -224,6 +242,18 @@ let human1= new Image()
 human1.src= human1Ship
 let playerShips= [[human5V], [human4V], [human3V], [human2V], [human1]]
 
+let comp5V=new Image()
+comp5V.src= comp5Vertical
+let comp4V=new Image()
+comp4V.src=comp4Vertical
+let comp3V=new Image()
+comp3V.src=comp3Vertical
+let comp2V=new Image()
+comp2V.src=comp2Vertical
+let comp1= new Image()
+comp1.src= comp1Ship
+let compShips= [comp1, comp2V, comp3V, comp4V, comp5V]
+
 
 
 
@@ -234,4 +264,4 @@ let playerShips= [[human5V], [human4V], [human3V], [human2V], [human1]]
  
 
 
-export { renderComputerBoard, renderPlayerBoard, markGridSpotHit, markGridSpotMissed, setPlayerShips }
+export { renderComputerBoard, renderPlayerBoard, markGridSpotHit, markGridSpotMissed, setPlayerShips, placeComputerShipImg}

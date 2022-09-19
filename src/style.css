@@ -243,8 +243,69 @@ h2{
     margin-top: -1.3rem;
   }
 
+  .comp4{
+    position: absolute;
+    height: 15rem;
+      margin-left:.5rem;
+      margin-top: -12.5rem;
+  }
+
+  .comp3{
+    position: absolute;
+    height: 12rem;
+      margin-left:.5rem;
+      margin-top: -9.5rem;
+  }
+
+  .comp2{
+    position: absolute;
+    height: 8.6rem;
+      margin-left:.5rem;
+      margin-top: -6rem;
+  }
+
+  .comp1{
+    position: absolute;
+    height: 5.6rem;
+      margin-left:.5rem;
+      margin-top: -3rem;
+  }
 
   
+  .comp0{
+    position: absolute;
+    height: 2.4rem;
+      margin-left:.2rem;
+      margin-top: .3rem;
+  }
+
+  .rotated{
+    transform: rotate(90deg);
+}
+
+.comp4.rotated{
+
+    margin-left:7.5rem;
+    margin-top: -6rem;
+}
+
+.comp3.rotated{
+
+  margin-left:5.8rem;
+    margin-top: -4.5rem;
+}
+
+.comp2.rotated{
+  margin-left:4.1rem;
+    margin-top: -2.7rem;
+}
+
+.comp1.rotated{
+  margin-left:2.1rem;
+  margin-top: -1.3rem;
+}
+
+
 
 
 

@@ -19,6 +19,7 @@ export default class GameBoard{
         shipCoordinates.push(startPoint)
         if(orientation=="Horizontal"){
             let shipLength= ship.length-1
+            ship.axis=="Horizontal"
             for(let i=x+1; shipLength >0; i++){
                 let nextCoordinate= [i, y]
                 shipCoordinates.push(nextCoordinate)
@@ -27,6 +28,7 @@ export default class GameBoard{
         }
         else if(orientation=="Vertical"){
             let shipLength= ship.length-1
+            ship.axis="Vertical"
             for(let i=y+1; shipLength >0; i++){
                 let nextCoordinate= [x, i]
                 shipCoordinates.push(nextCoordinate)

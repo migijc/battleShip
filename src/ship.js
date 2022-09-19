@@ -4,11 +4,11 @@ export default class Ship{
         this.length=length
         this.positionsHit=[]
         this.isDestroyed=false
+        this.axis=null
     }
 
     hit=(position)=>{
         this.positionsHit.push(position)
-        console.log(position)
         markGridSpotHit(this.positionsHit[this.positionsHit.length-1])
         return 
     }

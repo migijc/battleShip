@@ -1,4 +1,5 @@
 import GameBoard from "./GameBoard";
+import {placeComputerShipImg} from "./DOMInteractions"
 
 let player = {
     name:"Human",
@@ -54,6 +55,94 @@ let computer = {
             }
         })
     },
+
+    placeRandomShip(currentLength){
+        let actual=currentLength
+        let shipAxis=["Horizontal", "Vertical"]
+        currentLength=currentLength||5
+        if(actual ==0){
+            return
+        } else {
+            let currentShipAxis= shipAxis[Math.floor(Math.random()*2)]
+            let arrayOfAllCoordinates=[]
+            if(computer.board.shipCoordinates.length > 0){
+                computer.board.shipCoordinates.forEach(ship=>{
+                    ship.forEach(coordinate=>{
+                        arrayOfAllCoordinates.push(coordinate)
+                    })
+                })
+                arrayOfAllCoordinates=arrayOfAllCoordinates.map(set=>{
+                    return set.toString()
+                })
+            }
+            let openPosition=[]
+            let realOpen=[]
+            if(currentShipAxis=="Horizontal"){
+                openPosition=computer.board.allAvailableSpots.filter(spot=>{
+                    if((spot[0]+currentLength)< 11 && computer.isShipsIntersecting(currentLength, spot, currentShipAxis, arrayOfAllCoordinates)==false){
+                        computer.isShipsIntersecting(currentLength, spot, currentShipAxis, arrayOfAllCoordinates)
+                        return spot
+                    }
+                })
+            }
+            else{
+                if(currentShipAxis=="Vertical"){
+                    openPosition=computer.board.allAvailableSpots.filter(spot=>{
+                        if((spot[1]+currentLength)< 11 && computer.isShipsIntersecting(currentLength, spot, currentShipAxis, arrayOfAllCoordinates)==false){
+                            return spot
+                        }
+                    })
+                }
+            } 
+            let gridSpot= openPosition[Math.floor(Math.random() * openPosition.length)]
+            let domSpot=document.querySelector(`#computerBoard > [data-coordinates= "${gridSpot[0]},${gridSpot[1]}"]`)
+            placeComputerShipImg( domSpot, currentLength, currentShipAxis)
+            computer.board.placeShip(currentLength, gridSpot, currentShipAxis)
+            return computer.placeRandomShip(currentLength-1)
+        }
+
+    },
+    findNextCoordinates(length, coordinates, orientation){
+        let nextCoordinates=[]
+        let start=1
+        if(orientation== "Horizontal"){
+            while(nextCoordinates.length < length){
+                nextCoordinates.push([coordinates[0]+1, coordinates[1]])
+            }
+            return nextCoordinates
+        }
+        else{
+            if(orientation== "Vertical"){
+                while(nextCoordinates.length < length-1){
+                    nextCoordinates.push([coordinates[0], coordinates[1]+ start++].toString())
+                }
+                return nextCoordinates
+            }
+        }
+    },
+
+    isShipsIntersecting(length, spot, axis, coordinates){
+        let nextInLine=computer.findNextCoordinates(length, spot, axis)
+        let returnAnswer= false
+        coordinates.forEach(set=>{
+            if(nextInLine.includes(set)){
+                returnAnswer= true
+            }
+        })
+        return returnAnswer
+    },
+
+    displaySunkShips(ships){
+        computer.board.ships.forEach(ship=>{
+            if(ship.isSunk()==true){
+                let index= computer.board.ships.indexOf(ship)
+                let start=computer.board.shipCoordinates[index][0]
+                let sunkShip=document.querySelector(`#computerBoard > [data-coordinates = "${start[0]},${start[1]}"]`)
+                let img=sunkShip.childNodes[0]
+                img.style.visibility="visible"
+            }
+        })
+    }
 }
 
 let players=[player, computer]
