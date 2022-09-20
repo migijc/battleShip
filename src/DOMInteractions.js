@@ -88,6 +88,8 @@ changeOrientationButton.textContent="Rotate"
 let playerShipsDiv=document.querySelector(".playerShips")
 let gameBody=document.querySelector("#gameBody")
 let computerSide=document.body.querySelector(".computerSide")
+let playerSide=document.body.querySelector(".playerSide")
+
 
 let setPlayerShips= (start, length)=>{
     start=start||0
@@ -95,6 +97,9 @@ let setPlayerShips= (start, length)=>{
     if(start == playerShips.length){
         // gameBody.append(computerSide)
         playerShipsDiv.style.visibility="hidden"
+        computerSide.style.visibility="visible"
+        playerSide.removeChild(document.querySelector(".rulesContainer"))
+
         return gameLoop()
     }
     else{ 
@@ -229,6 +234,43 @@ function getAllPossibleCoordinates(length,ship){
     }
 }
 
+function getPlayerName(){
+    let playerNameContainer=document.createElement("div")
+    playerNameContainer.classList.add("nameContainer")
+    let nameLabel=document.createElement("label")
+    let nameInput=document.createElement("input")
+    let submitName= document.createElement("button")
+    submitName.classList.add("setNameButton")
+    submitName.textContent="Start"
+    nameLabel.textContent="Player's Name"
+    nameInput.setAttribute("id", "playerName")
+    nameInput.setAttribute("name","playerName")
+    nameLabel.setAttribute("for", "playerName")
+    playerNameContainer.append(nameLabel, nameInput, submitName)
+    document.body.appendChild(playerNameContainer)
+    submitName.addEventListener("click", ()=>{
+        console.log(nameInput.value)
+        document.body.removeChild(playerNameContainer)
+        computerSide.style.visibility="hidden"
+        gameBody.style.visibility="visible"
+        let theName= document.createElement("h2")
+        theName.textContent=nameInput.value+"'s Board"
+        theName.classList.add("playerName")
+        playerSide.append(theName)
+        displayDragRule()
+    })
+}
+
+function displayDragRule(){
+    let dragRulesContainer=document.createElement("div")
+    let rules=document.createElement("p")
+    rules.textContent="Drag all ships to any available spot on your board to begin playing!"
+    dragRulesContainer.appendChild(rules)
+    dragRulesContainer.classList.add("rulesContainer")
+    rules.classList.add("rules")
+    playerSide.append(dragRulesContainer)
+}
+
 
 let human5V=new Image()
 human5V.src= human5Vertical
@@ -264,4 +306,5 @@ let compShips= [comp1, comp2V, comp3V, comp4V, comp5V]
  
 
 
-export { renderComputerBoard, renderPlayerBoard, markGridSpotHit, markGridSpotMissed, setPlayerShips, placeComputerShipImg}
+export { renderComputerBoard, renderPlayerBoard, markGridSpotHit,
+     markGridSpotMissed, setPlayerShips, placeComputerShipImg, getPlayerName}

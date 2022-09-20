@@ -1,23 +1,14 @@
 import players from "./players";
 import { currentPlayer } from "./players";
-import { renderComputerBoard, renderPlayerBoard, setPlayerShips } from "./DOMInteractions"
+import { renderComputerBoard, renderPlayerBoard, setPlayerShips, getPlayerName } from "./DOMInteractions"
 let gameBody=document.body.querySelector("#gameBody")
 let computerSide=document.body.querySelector(".computerSide")
-// players[1].board.placeShip(5, [2,1], "Vertical")
-//     players[1].board.placeShip(4, [2,6], "Vertical")
-//     players[1].board.placeShip(3, [4,4], "Horizontal")
-    // players[1].board.placeShip(2, [8, 7], "Horizontal")
-//     players[1].board.placeShip(1, [0, 9], "Vertical")
 
-    // players[0].board.placeShip(5, [3, 3], "Vertical")
-    // players[0].board.placeShip(4, [6, 0], "Vertical")
-    // players[0].board.placeShip(3, [0, 0], "Vertical")
-    // players[0].board.placeShip(2, [8, 9], "Vertical")
-    // players[0].board.placeShip(1, [0, 9], "Vertical")
     renderComputerBoard()
-    // gameBody.removeChild(computerSide)
     renderPlayerBoard()
+    getPlayerName()
     setPlayerShips()
+    gameBody.style.visibility="hidden"
     console.log(players)
 
 
@@ -27,6 +18,8 @@ let gameLoop = () => {
         alert("gameOver")
         return
     }
+
+
     let a = new Promise((resolve)=>{
         document.querySelectorAll("#computerBoard > .gridCell").forEach(spot=>{
             spot.addEventListener("click", (e)=>{
